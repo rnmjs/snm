@@ -1,5 +1,5 @@
 {
-  "name": "@rnm/snm",
+  "name": "snm",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -7,14 +7,25 @@
     "prepare": "fenge install",
     "style": "fenge",
     "style:update": "fenge -u",
-    "test": "tsc --noEmit"
+    "test": "pnpm style && pnpm typecheck && pnpm test:vitest",
+    "test:vitest": "vitest run --coverage --coverage.reporter=json-summary --coverage.reporter=html && make-coverage-badge --output-path badge/coverage.svg",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "commander": "14.0.2",
+    "compressing": "2.0.0",
+    "semver": "7.7.3"
   },
   "devDependencies": {
     "@changesets/cli": "2.29.8",
     "@rnm/tscx": "0.3.10",
     "@types/node": "22.19.3",
+    "@types/semver": "7.7.1",
+    "@vitest/coverage-v8": "4.0.16",
     "fenge": "0.12.6",
-    "typescript": "5.9.3"
+    "make-coverage-badge": "1.2.0",
+    "typescript": "5.9.3",
+    "vitest": "4.0.16"
   },
   "devEngines": {
     "runtime": {
